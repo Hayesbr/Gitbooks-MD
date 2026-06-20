@@ -6,9 +6,9 @@ Welcome to Diversifi. This guide will walk you through everything you need to ge
 
 Before logging in for the first time, make sure you have the following ready:
 
-- Your carrier rate sheets — you'll need these to load your cost rates into the platform
-- Your WMS login credentials — to connect your warehouse management system
-- Your team's email addresses — to invite the people who will be using the platform
+* Your carrier rate sheets — you'll need these to load your cost rates into the platform
+* Your WMS login credentials — to connect your warehouse management system
+* Your team's email addresses — to invite the people who will be using the platform
 
 ## Step 1 — Set Up Your Account
 
@@ -20,9 +20,9 @@ Once you're in, go to Settings → Account to complete your company profile, inc
 
 Go to Settings → Users and invite the team members who will be using the platform. Diversifi has three user roles:
 
-- **Owner** — full access including user management, warehouse setup, integrations, and billing settings
-- **Manager** — full access to all platform features
-- **Regular** — can run bids, manage billing records, and view reports; cannot manage users or integrations
+* **Owner** — full access including user management, warehouse setup, integrations, and billing settings
+* **Manager** — full access to all platform features
+* **Regular** — can run bids, manage billing records, and view reports; cannot manage users or integrations
 
 At least one person on your team should be set to Owner. We recommend having two Owners so there is always a backup administrator.
 
@@ -42,9 +42,9 @@ Go to Carriers → Cost Rates and enter your negotiated rates for each carrier. 
 
 You'll enter rates using the spreadsheet-style grid. For each carrier and service you'll need:
 
-- Weight breaks and corresponding rates per zone
-- Effective date range for the rate set
-- A nickname to identify the rate set (useful if you have multiple rate sets for the same carrier)
+* Weight breaks and corresponding rates per zone
+* Effective date range for the rate set
+* A nickname to identify the rate set (useful if you have multiple rate sets for the same carrier)
 
 Once your rates are in, you can assign them to specific warehouses so the right rates are always used in the right bid.
 
@@ -72,16 +72,16 @@ If you are new to Diversifi billing, start by connecting your carrier integratio
 
 Use this checklist to make sure you have everything set up correctly in your first month:
 
-- [ ] Account profile complete
-- [ ] Team invited with correct roles assigned
-- [ ] WMS connected and syncing
-- [ ] Carrier cost rates loaded for all active carriers
-- [ ] Cost rates assigned to warehouses
-- [ ] First bid created and exported
-- [ ] Carrier invoices connected via integration or email ingest
-- [ ] First billing cycle created
-- [ ] Billing rules configured in Owlfred
-- [ ] First bill generated and reviewed
+* [ ] Account profile complete
+* [ ] Team invited with correct roles assigned
+* [ ] WMS connected and syncing
+* [ ] Carrier cost rates loaded for all active carriers
+* [ ] Cost rates assigned to warehouses
+* [ ] First bid created and exported
+* [ ] Carrier invoices connected via integration or email ingest
+* [ ] First billing cycle created
+* [ ] Billing rules configured&#x20;
+* [ ] First bill generated and reviewed
 
 ## Need Help?
 

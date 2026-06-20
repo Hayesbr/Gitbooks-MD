@@ -12,13 +12,13 @@ A WMS integration is required before you can create billing rules. Rules are eva
 
 Every rule is built from the same parts:
 
-* **Trigger (event)** — the event that the rule reacts to: a unit being picked, an order shipping, a parcel being delivered, an inbound shipment being received, a return being processed, and so on.
-* **Data set** — the type of activity the rule applies to (parcels, orders, returns, receipts, etc.). Which data is available depends on your WMS.
-* **Conditions** — an optional set of tests that must be true for the rule to apply, combined with AND/OR logic. For example, "order type is DTC" AND "item count is greater than 3." A rule with no conditions applies to every matching event.
-* **Branches** — optional variations within a rule. The most common branch is by carrier or service type, so a single rule can handle different rates across different carriers or services.
-* **Action** — what the rule does when it matches. There are three action types (below).
+* **Trigger (event)** — the event the rule reacts to: a unit being picked, an order shipping, a parcel being delivered, an inbound shipment being received, a return being processed, and so on.
+* **Data set** — the type of activity the rule applies to (parcels, orders, returns, receipts, etc.). Which datasets are available depends on your WMS integration.
+* **Conditions** — an optional set of tests that must all be true for the rule to fire, combined with AND/OR logic. For example, "order type is DTC" AND "item count is between 1 and 5." A rule with no conditions applies to every matching event. Conditions determine whether the rule fires at all — if a condition fails, the rule is skipped entirely. Range-based conditions like this are also how tiered pricing is built: one rule covers item count 1–5, another covers 6–10, and so on.
+* **Branches** — optional variations within a rule that apply different logic or rates depending on attributes of the event, such as carrier, service type, SKU type, or warehouse. When an event matches the rule, branches determine _which version_ of the rule applies. Note: branches cannot currently be nested — a branch cannot contain another branch. If your pricing logic requires multiple levels of variation, you will need to build separate rules to cover each combination.
+* **Action** — what the rule does when it matches. There are three action types (see below).
 * **Customer scope** — which customers the rule applies to: all customers, an include list, or an exclude list.
-* **Priority** — controls the order in which rules are evaluated. A lower number is higher priority.
+* **Priority** — controls the order in which rules are evaluated. A lower number means higher priority.
 
 ## The Three Action Types
 

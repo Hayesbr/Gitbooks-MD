@@ -14,16 +14,16 @@ Both export types follow the same four-section structure as the bill itself. Eac
 
 Go to Billing → Customer Billing → Bills, open the approved bill you want to export, and click Export in the top right corner. From the export panel you can:
 
-- **Choose your export type** — Select Internal or Customer-facing depending on who will receive the file.
-- **Choose which sections to include** — Select all four sections for a complete bill export, or select individual sections if you only need a specific part. For example, if a customer only wants to see their parcel charges for the period, you can export just that section.
-- **Choose your file format** — All exports are available as Excel (.xlsx), formatted and ready to send without additional editing.
-- **Name your file** — Export files are named automatically using the customer name, billing period, and export type — for example, `Acme Brands — May 16-31 — Customer Bill.xlsx`. You can rename the file before downloading if needed.
+* **Choose your export type** — Select Internal or Customer-facing depending on who will receive the file.
+* **Choose which sections to include** — Select all four sections for a complete bill export, or select individual sections if you only need a specific part. For example, if a customer only wants to see their parcel charges for the period, you can export just that section.
+* **Choose your file format** — All exports are available as Excel (.xlsx), formatted and ready to send without additional editing.
+* **Name your file** — Export files are named automatically using the customer name, billing period, and export type — for example, `Acme Brands — May 16-31 — Customer Bill.xlsx`. You can rename the file before downloading if needed.
 
 ## Bulk Export
 
 To export bills for multiple customers at once, go to Billing → Customer Billing → Periods, open the period you want to export, and select the bills you want to include. Click Bulk export and choose your export type. Diversifi packages all selected bills into a zip folder, with each file named after the customer so they are easy to identify and distribute. This is useful at the end of a billing cycle when you need to send exports to all customers at once.
 
-## Sending to QuickBooks
+## _Coming Soon: Sending to QuickBooks_
 
 In addition to file exports, Diversifi can push approved bills directly to QuickBooks. From an approved bill, click Send to QuickBooks and the bill is transmitted automatically; the bill status then changes to Sent and the bill is locked. Diversifi maps the bill sections to the corresponding line items in QuickBooks so the invoice matches your bill structure. Contact your Diversifi account manager to configure your QuickBooks integration if it is not yet connected.
 

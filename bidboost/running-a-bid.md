@@ -6,9 +6,9 @@ Once your cost rates are loaded you are ready to run your first bid. This walkth
 
 Make sure you have completed the following before running a bid:
 
-- Cost rates loaded for the carriers you want to include
-- Carrier configurations set up with DIM factor, fuel, and surcharge settings
-- Warehouses added with rate sets assigned and carrier injection points defined
+* Cost rates loaded for the carriers you want to include
+* Carrier configurations set up with DIM factor, fuel, and surcharge settings
+* Warehouses added with rate sets assigned and carrier injection points defined
 
 If you haven't done this yet, go to [Cost Rates](cost-rates.md) first.
 
@@ -24,9 +24,9 @@ Go to Sales → Bid Center and click New Bid. You'll be asked to name your bid a
 
 Select the bid type based on what data you have from the prospect:
 
-- **PLD — Shipment File** — Upload the prospect's historical shipment file: a spreadsheet of their actual shipments including weight, dimensions, destination ZIP code, and carrier used. Diversifi will rate every shipment in the file against your carrier costs. Accepted file format: Excel (.xlsx).
-- **SKU** — Enter the prospect's product SKUs with dimensions and weights. Diversifi will rate each SKU across your selected carriers and zones.
-- **No Data** — No prospect data required. Diversifi generates a rate card based on a standard 7 lb package in zone 4 — the most common weight and zone profile in aggregated market data.
+* **PLD — Shipment File** — Upload the prospect's historical shipment file: a spreadsheet of their actual shipments including weight, dimensions, destination ZIP code, and carrier used. Diversifi will rate every shipment in the file against your carrier costs. Accepted file format: Excel (.xlsx).
+* **SKU** — Enter the prospect's product SKUs with dimensions and weights. Diversifi will rate each SKU across your selected carriers and zones.
+* **No Data** — No prospect data required. Diversifi generates a rate card based on a standard 7 lb package in zone 4 — the most common weight and zone profile in aggregated market data.
 
 ## Step 3 — Select Carriers and Services
 
@@ -44,10 +44,10 @@ The markups screen is where you set how much margin you want to make on top of y
 
 Your shipments are organized into groups based on transit time:
 
-- **Next Day** — shipments where a next day service is the winning option
-- **2–3 Day** — shipments where a 2 to 3 day ground or express service wins
-- **4–5+ Day** — shipments where a slower ground service wins
-- **Unrated** — shipments where Diversifi could not determine a speed tier based on the data available. These are shown at the bottom so you can see them, but they do not affect the rated results above.
+* **Next Day** — shipments where a next day service is the winning option
+* **2–3 Day** — shipments where a 2 to 3 day ground or express service wins
+* **4–5+ Day** — shipments where a slower ground service wins
+* **Unrated** — shipments where Diversifi could not determine a speed tier based on the data available. These are shown at the bottom so you can see them, but they do not affect the rated results above.
 
 Each speed tier group shows the average cost per package, and a badge identifies the winning carrier and service — the one with the lowest average cost per package after all markups are applied. As you increase the markup on a carrier or service, the average cost per package updates in real time, so you can find the markup level where your margin is maximized without losing the win to a competitor carrier.
 
@@ -61,18 +61,18 @@ For full detail on the markups screen, see [Markups & Surcharges](markups-and-su
 
 Once you are happy with your markups, review the KPI cards at the top of the screen:
 
-- **Total proposed cost** — what the prospect would pay in total using your rates
-- **Estimated savings** — how much they would save compared to their current rates
-- **Savings percentage** — the percentage reduction from their current spend
-- **Average cost per shipment** — the average proposed rate per package
+* **Total proposed cost** — what the prospect would pay in total using your rates
+* **Estimated savings** — how much they would save compared to their current rates
+* **Savings percentage** — the percentage reduction from their current spend
+* **Average cost per shipment** — the average proposed rate per package
 
-If the numbers look right, click Export and choose your export type — Net Rate, Blended Rate, or Shipment File. (Shipment File is only available on PLD bids.) See [Exports](exports.md) for full detail. Your export file will be named: ProspectName_NickName_ExportType.
+If the numbers look right, click Export and choose your export type — Net Rate, Blended Rate, or Shipment File. (Shipment File is only available on PLD bids.) See [Exports](exports.md) for full detail. Your export file will be named: ProspectName\_NickName\_ExportType.
 
 ## Tips for a Strong Bid
 
-- **Use PLD when you can.** A shipment file bid is always more compelling than a No Data bid because it uses the prospect's real data. Push to get a shipment file whenever possible.
-- **Start with a conservative markup.** It is easier to come down on price than to go up. Start with a markup that gives you healthy margin and adjust if the prospect pushes back.
-- **Run the bid with 0% markup first.** Before applying your markup, run a quick export at 0% to verify your cost rates are loading correctly. The export should match your cost rate sheet exactly. If it doesn't, check your carrier configuration and rate set assignments.
+* **Use PLD when you can.** A shipment file bid is always more compelling than a No Data bid because it uses the prospect's real data. Push to get a shipment file whenever possible.
+* **Let the AI-suggested markup be your starting point.** The platform analyzes your cost rates and market data to recommend an optimal markup — start there. It is easier to come down on price than to go up, and the AI recommendation gives you a defensible starting position if the prospect pushes back.
+* **Before sharing an export with a prospect, use the validation view in exports to verify your cost rates are loading correctly.** If anything looks off, check your carrier configuration and rate set assignments.
 
 ## Common Questions
 

@@ -74,6 +74,10 @@ If the numbers look right, click Export and choose your export type — Net Rate
 * **Let the AI-suggested markup be your starting point.** The platform analyzes your cost rates and market data to recommend an optimal markup — start there. It is easier to come down on price than to go up, and the AI recommendation gives you a defensible starting position if the prospect pushes back.
 * **Before sharing an export with a prospect, use the validation view in exports to verify your cost rates are loading correctly.** If anything looks off, check your carrier configuration and rate set assignments.
 
+- **Use PLD when you can.** A shipment file bid is always more compelling than a No Data bid because it uses the prospect's real data. Push to get a shipment file whenever possible.
+- **Let the AI-suggested markup be your starting point.** The platform analyzes your cost rates and market data to recommend an optimal markup — start there. It is easier to come down on price than to go up, and the AI recommendation gives you a defensible starting position if the prospect pushes back.
+- **Before sharing an export with a prospect, use the validation view in exports to verify your cost rates are loading correctly.** If anything looks off, check your carrier configuration and rate set assignments.
+
 ## Common Questions
 
 **Why is a carrier not showing up in my bid?** The carrier either doesn't have cost rates loaded, or the rate set isn't assigned to the selected warehouse. Go to Carriers → Cost Rates and confirm the rates are loaded and assigned correctly.

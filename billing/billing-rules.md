@@ -2,7 +2,9 @@
 
 Billing rules are what tell Diversifi how to calculate each fee on every bill. Instead of building charges by hand in a spreadsheet, you define rules once and Diversifi applies them automatically every time a bill is generated.
 
-A rule answers two questions: _when_ should a charge apply, and _what_ is the charge? For example: "When a unit is picked for an order, charge a $0.50 pick fee per unit," or "When an order ships, add a flat $2.00 order processing fee."
+A rule answers two questions: *when* should a charge apply, and *what* is the charge? For example: "When a unit is picked for an order, charge a $0.50 pick fee per unit," or "When an order ships, add a flat $2.00 order processing fee."
+
+Looking for step-by-step setup of the most common rules? See the [Billing Rule Guide](billing-rule-guide.md) — it walks through the 10 standard rules with worked examples and ready-to-use Owlfred prompts.
 
 {% hint style="info" %}
 A WMS integration is required before you can create billing rules. Rules are evaluated against your order and shipment data, so the platform needs at least one active WMS integration connected first. See [WMS Integrations](../integrations/wms-integrations.md).
@@ -12,31 +14,35 @@ A WMS integration is required before you can create billing rules. Rules are eva
 
 Every rule is built from the same parts:
 
-* **Trigger (event)** — the event the rule reacts to: a unit being picked, an order shipping, a parcel being delivered, an inbound shipment being received, a return being processed, and so on.
-* **Data set** — the type of activity the rule applies to (parcels, orders, returns, receipts, etc.). Which datasets are available depends on your WMS integration.
-* **Conditions** — an optional set of tests that must all be true for the rule to fire, combined with AND/OR logic. For example, "order type is DTC" AND "item count is between 1 and 5." A rule with no conditions applies to every matching event. Conditions determine whether the rule fires at all — if a condition fails, the rule is skipped entirely. Range-based conditions like this are also how tiered pricing is built: one rule covers item count 1–5, another covers 6–10, and so on.
-* **Branches** — optional variations within a rule that apply different logic or rates depending on attributes of the event, such as carrier, service type, SKU type, or warehouse. When an event matches the rule, branches determine _which version_ of the rule applies. Note: branches cannot currently be nested — a branch cannot contain another branch. If your pricing logic requires multiple levels of variation, you will need to build separate rules to cover each combination.
-* **Action** — what the rule does when it matches. There are three action types (see below).
-* **Customer scope** — which customers the rule applies to: all customers, an include list, or an exclude list.
-* **Priority** — controls the order in which rules are evaluated. A lower number means higher priority.
+- **Trigger (event)** — the event that the rule reacts to: a unit being picked, an order shipping, a parcel being delivered, an inbound shipment being received, a return being processed, and so on.
+- **Data set** — the type of activity the rule applies to (parcels, orders, returns, receipts, etc.). Which data is available depends on your WMS.
+- **Conditions** — an optional set of tests that must be true for the rule to apply, combined with AND/OR logic. For example, "order type is DTC" AND "item count is greater than 3." A rule with no conditions applies to every matching event.
+- **Branches** — optional variations within a rule (for example, one branch per carrier, package type, or customer). Rules branch one level deep — a branch cannot contain another branch.
+- **Sheets & Pivots** — a faster way to build many branches at once from a table (a Sheet), or to price on two dimensions like weight × zone in a single rule (a Pivot). See the [Billing Rule Guide](billing-rule-guide.md) for details.
+- **Action** — what the rule does when it matches. There are three action types (below).
+- **Customer scope** — which customers the rule applies to: all customers, an include list, or an exclude list.
+- **Priority** — controls the order in which rules are evaluated. A lower number is higher priority.
+- **Owlfred** — the built-in AI assistant. Describe a rule in plain English and Owlfred builds it, and it can read rate tables pasted straight from a spreadsheet.
 
 ## The Three Action Types
 
 Every rule applies one of three kinds of charge:
 
-* **Markup** — increases the cost basis (typically the carrier cost) by a percentage, a flat dollar amount, or a multiplier. This is how you build your margin into transportation charges.
-* **Fee** — adds a charge such as a pick fee, packaging fee, or handling fee.
-* **Discount** — reduces the charge, for example a volume or loyalty discount.
+- **Markup** — increases the cost basis (typically the carrier cost) by a percentage, a flat dollar amount, or a multiplier. This is how you build your margin into transportation charges.
+- **Fee** — adds a charge such as a pick fee, packaging fee, or handling fee.
+- **Discount** — reduces the charge, for example a volume or loyalty discount.
 
 ## How Multiple Rules Combine
 
 Diversifi evaluates **all** of your rules against each shipment, and **every matching rule contributes** to the final charge. This lets you layer simple rules into sophisticated pricing instead of writing one giant rule for every scenario. The way matches combine depends on the action type:
 
-*   **Markups are additive.** If three markup rules match the same shipment, their amounts are summed. Percentage markups are applied to the cost basis and added together; flat-amount markups are added directly. (Multipliers are converted to a markup amount and summed, not compounded.)
+- **Markups are additive.** If three markup rules match the same shipment, their amounts are summed. Percentage markups are applied to the cost basis and added together; flat-amount markups are added directly. (Multipliers are converted to a markup amount and summed, not compounded.)
 
-    _Example:_ a 10% markup + a 5% markup + a $2.00 flat markup on a shipment = (cost basis × 15%) + $2.00.
-* **Fees are cumulative.** Each matching fee rule creates its own line item on the bill, so a fuel surcharge, a residential fee, and a handling fee can all apply to the same shipment and each appears separately.
-* **Discounts respect stackability.** Each discount can be marked stackable or not. Stackable discounts all apply together; if a non-stackable discount matches, only one non-stackable discount is applied (the highest-priority one).
+  *Example:* a 10% markup + a 5% markup + a $2.00 flat markup on a shipment = (cost basis × 15%) + $2.00.
+
+- **Fees are cumulative.** Each matching fee rule creates its own line item on the bill, so a fuel surcharge, a residential fee, and a handling fee can all apply to the same shipment and each appears separately.
+
+- **Discounts respect stackability.** Each discount can be marked stackable or not. Stackable discounts all apply together; if a non-stackable discount matches, only one non-stackable discount is applied (the highest-priority one).
 
 **Calculation order:** Diversifi first calculates the total markup from all matching markup rules (or the system default if none match), adds it to the cost basis to get a subtotal, then calculates fees (based on the cost basis) and discounts (based on the subtotal) as separate tracked amounts.
 
@@ -50,9 +56,9 @@ Rules are evaluated in priority order, from lowest number to highest (priority 1
 
 Each rule can apply to:
 
-* **All customers** — the default; the rule is evaluated for every customer in the cycle
-* **Include list** — only the customers you select
-* **Exclude list** — every customer except the ones you select
+- **All customers** — the default; the rule is evaluated for every customer in the cycle
+- **Include list** — only the customers you select
+- **Exclude list** — every customer except the ones you select
 
 This lets you keep one standard rule set across your book of business while carving out exceptions for specific customers.
 
@@ -62,20 +68,20 @@ If no markup rule matches a shipment, Diversifi applies your account's default m
 
 ## Common Rule Types
 
-These are the standard rule structures most 3PLs configure. They are a starting point — you can add custom rules on top.
+These are the standard rule structures most 3PLs configure. They are a starting point — you can add custom rules on top. The [Billing Rule Guide](billing-rule-guide.md) covers each one in detail with setup steps, worked examples, and Owlfred prompts.
 
-| Rule type                              | What it does                                                                                                                   |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **Standard Unit Pick Fee**             | A flat fee per unit picked. Optionally make the first N picks per order free. Branch by customer for different per-unit rates. |
-| **Pick Fee Tiered by Volume**          | A pick fee that decreases as monthly volume increases — rewards higher-volume customers with a lower per-pick rate.            |
-| **Order Processing Fee**               | A flat fee charged once per order regardless of how many boxes ship. Can be tiered by unit count or order value.               |
-| **Carrier Markup**                     | A flat dollar or percentage markup applied on top of carrier cost — your transportation margin.                                |
-| **Third-Party Freight Handling Fee**   | A handling fee applied to freight moved through a third party.                                                                 |
-| **Carrier Rate Sheet (Weight × Zone)** | Bills transportation off a defined weight-by-zone rate table rather than a simple markup.                                      |
-| **Inbound Receiving Fee**              | A fee charged when inbound shipments are received into the warehouse.                                                          |
-| **Returns Processing Fee**             | A fee charged when a return is processed.                                                                                      |
-| **Packaging Materials Fee**            | A fee for packaging materials used to fulfill an order.                                                                        |
-| **Monthly Recurring Fee**              | A fixed recurring charge at the account level, such as a technology or account-management fee.                                 |
+| Rule type | What it does |
+|-----------|--------------|
+| **Standard Unit Pick Fee** | A flat fee per unit picked. Optionally make the first N picks per order free. Branch by customer for different per-unit rates. |
+| **Pick Fee Tiered by Volume** | A pick fee that decreases as monthly volume increases — rewards higher-volume customers with a lower per-pick rate. |
+| **Order Processing Fee** | A flat fee charged once per order regardless of how many boxes ship. Can be tiered by unit count or order value. |
+| **Carrier Markup** | A flat dollar or percentage markup applied on top of carrier cost — your transportation margin. |
+| **Third-Party Freight Handling Fee** | A handling fee applied to freight moved through a third party. |
+| **Carrier Rate Sheet (Weight × Zone)** | Bills transportation off a defined weight-by-zone rate table rather than a simple markup. |
+| **Inbound Receiving Fee** | A fee charged when inbound shipments are received into the warehouse. |
+| **Returns Processing Fee** | A fee charged when a return is processed. |
+| **Packaging Materials Fee** | A fee for packaging materials used to fulfill an order. |
+| **Monthly Recurring Fee** | A fixed recurring charge at the account level, such as a technology or account-management fee. |
 
 {% hint style="info" %}
 Some fee types depend on data fields that not every WMS provides. If a rule relies on data your WMS doesn't supply, it can't be evaluated accurately — your account manager will confirm what's available for your integration during onboarding.

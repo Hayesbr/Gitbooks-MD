@@ -126,7 +126,9 @@ A fixed dollar amount charged for each unit pulled from the shelf. The most comm
 - **Action** — Flat fee per unit picked
 - **Typical rates** — $0.10–$0.75 per unit (no default — set per customer)
 
-> **Owlfred prompt:** "Create a pick fee rule labeled [rule name] where each pick is charged at [insert fee] per unit."
+{% hint style="success" %}
+**Owlfred prompt:** "Create a pick fee rule labeled [rule name] where each pick is charged at [insert fee] per unit."
+{% endhint %}
 
 **Example:** Northwind Supply Co. is charged $0.35 per unit picked. An order with 12 units picked generates a $4.20 pick fee.
 
@@ -142,7 +144,9 @@ A pick fee where the per-unit rate changes with the number of units in an order 
 - **Action** — Flat fee per unit at the applicable tier rate
 - **Typical rates** — Example: $0.50 for 1–5 units, $0.40 for 6–10, $0.30 for 11+
 
-> **Owlfred prompt:** "Create a volume tiered pick fee called [rule name]. This should apply to [filter condition]. Here are my rates: Units per order (1-5) $0.50, Units per order (6-10) $0.40, Units per order (11+) $0.30."
+{% hint style="success" %}
+**Owlfred prompt:** "Create a volume tiered pick fee called [rule name]. This should apply to [filter condition]. Here are my rates: Units per order (1-5) $0.50, Units per order (6-10) $0.40, Units per order (11+) $0.30."
+{% endhint %}
 
 {% hint style="info" %}
 **Tip:** Paste your rate table directly from a spreadsheet. Owlfred reads both columns at once, or each column pasted separately — either format works.
@@ -166,9 +170,11 @@ A flat fee charged per fulfilled order, regardless of unit count. Can also be st
 Owlfred may label this "Fee" rather than "Order Processing" — there is no functional difference.
 {% endhint %}
 
-> **Owlfred prompt (flat):** "Create an order processing fee that applies a [insert fee] fee to each order that is fulfilled."
->
-> **Owlfred prompt (tiered):** "Create a tiered order processing fee. Here are my rates: Weekly Base Order Fee (1-1000) $1.60, Weekly Base Order Fee (1001-2000) $1.50, Weekly Base Order Fee (2001+) $1.40."
+{% hint style="success" %}
+**Owlfred prompt (flat):** "Create an order processing fee that applies a [insert fee] fee to each order that is fulfilled."
+
+**Owlfred prompt (tiered):** "Create a tiered order processing fee. Here are my rates: Weekly Base Order Fee (1-1000) $1.60, Weekly Base Order Fee (1001-2000) $1.50, Weekly Base Order Fee (2001+) $1.40."
+{% endhint %}
 
 **Example:** Acme Apparel pays a flat $1.75 order processing fee on every fulfilled order. Verve Wellness instead pays a graduated tiered rate by shipment volume: $1.60/order for the first 1,000 shipments, $1.50 for 1,001–2,000, and $1.40 for 2,001+.
 
@@ -189,7 +195,9 @@ The most universal billing rule in 3PL operations. Every shipment gets marked up
 **Important:** Always remove a customer from a blanket markup rule once a customer-specific rule is in place for them — otherwise both rules apply to the same shipment, and remember that markups add together. If you build carrier branches manually, configure one carrier at a time; selecting multiple carriers together can make service names display without their carrier label.
 {% endhint %}
 
-> **Owlfred prompt:** "Create a carrier markup rule that charges a [insert percentage] markup anytime the cost basis is greater than 0."
+{% hint style="success" %}
+**Owlfred prompt:** "Create a carrier markup rule that charges a [insert percentage] markup anytime the cost basis is greater than 0."
+{% endhint %}
 
 **Example:** A blanket rule adds a 12% markup to every shipment's carrier cost. Acme Apparel has its own rule at 8%, reflecting a negotiated rate — and is removed from the blanket rule so only the 8% applies.
 
@@ -203,7 +211,9 @@ A charge that applies when a brand ships on its own carrier account. Your wareho
 - **Action** — Markup applied when third-party freight is true (can also be configured as a flat fee per shipment)
 - **Typical rates** — $1.50–$10.00 per shipment, or a set percentage (no default)
 
-> **Owlfred prompt:** "Create a third-party freight rule that applies a [insert rate] markup when third-party freight is true [insert any additional conditions]."
+{% hint style="success" %}
+**Owlfred prompt:** "Create a third-party freight rule that applies a [insert rate] markup when third-party freight is true [insert any additional conditions]."
+{% endhint %}
 
 **Example:** Northwind Supply Co. ships on its own UPS account. Every shipment on that account triggers a 15% third-party freight markup.
 
@@ -252,7 +262,9 @@ A flat fee charged per return unit received and processed. Covers the cost of in
 - **Action** — Flat fee per return unit processed
 - **Typical rates** — $2.00–$8.00 per return unit (no default)
 
-> **Owlfred prompt:** "Create a rule that applies a [insert fee] fee per [item/order] when return is true."
+{% hint style="success" %}
+**Owlfred prompt:** "Create a rule that applies a [insert fee] fee per [item/order] when return is true."
+{% endhint %}
 
 **Example:** Verve Wellness pays $3.00 per unit on any return. A return of 4 units bills $12.00.
 
@@ -268,7 +280,9 @@ A fee for the physical packaging materials used to fulfill an order, charged per
 - **Action** — Flat fee per package, matched to the branch for that package type
 - **Typical rates** — Varies by material cost. Many clients use a supplies-and-packaging margin.
 
-> **Owlfred prompt:** "Create a materials rule for [packaging material/type]. Here are my dimensions: 5 x 5 x 5, 10 x 4 x 4, [add more as needed]. And the associated fees: $2.49, $1.89, [add more as needed]."
+{% hint style="success" %}
+**Owlfred prompt:** "Create a materials rule for [packaging material/type]. Here are my dimensions: 5 x 5 x 5, 10 x 4 x 4, [add more as needed]. And the associated fees: $2.49, $1.89, [add more as needed]."
+{% endhint %}
 
 {% hint style="info" %}
 **Tip:** Dimensions and fees can be listed together in two columns or separately — Owlfred reads both formats. When branches are defined by multiple dimensions, confirm each branch name maps to the intended fee.
@@ -292,7 +306,9 @@ A fixed fee charged every billing period, not tied to any order, shipment, or in
 - **Action** — Fixed dollar amount per billing period
 - **Typical rates** — $50–$500 per month (no default)
 
-> **Owlfred prompt:** "Create a monthly rule called [rule name] that charges [insert fee] per month."
+{% hint style="success" %}
+**Owlfred prompt:** "Create a monthly rule called [rule name] that charges [insert fee] per month."
+{% endhint %}
 
 **Example:** Northwind Supply Co. pays a $150/month Platform Fee, billed automatically at the start of each billing period regardless of activity.
 

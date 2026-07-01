@@ -20,6 +20,7 @@
 * [Invoice Ingest](billing/invoice-ingest.md)
 * [Billing Rules](billing/billing-rules.md)
   * [Billing Rule Guide](billing/billing-rule-guide.md)
+  * [Billing Guide](billing/billing-rules/billing-guide.md)
 * [Bill Review](billing/bill-review.md)
 * [Multi-Shipment Logic](billing/multi-shipment-logic.md)
 * [Billing Exports](billing/exports.md)
